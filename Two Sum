@@ -1,0 +1,14 @@
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        n = len(nums)
+        hm = {}
+        result = [0] * 2
+        for i in range(n):
+            find_element = target - nums[i]
+            if find_element in hm:
+                result[0] = hm[find_element]
+                result[1] = i
+                break
+            else:
+                hm[nums[i]] = i
+        return result
