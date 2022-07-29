@@ -1,0 +1,24 @@
+class Solution:
+    def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
+                                                        #first let us check if the root is null or not
+        if root is None:
+            return []
+                                                        #We using a queue data structure to store 
+                                                        #and emove the values from the tree
+        
+        queue = [root]                                  #inserting the root of the tree first
+        ans_queue = []
+        levels = []
+        result = []
+        while queue != []:                                #while queue is not empty
+            for root in queue:
+                levels.append(root.val)
+                if root.left is not None:
+                    ans_queue.append(root.left)
+                if root.right is not None:
+                    ans_queue.append(root.right)
+            result.append(levels)
+            levels= []
+            queue = ans_queue
+            ans_queue = []
+        return result
