@@ -1,0 +1,10 @@
+class Solution:
+    def majorityElement(self, nums: List[int]) -> int:
+        
+        from collections import Counter
+        
+        hashmap = Counter(nums)
+        
+        for key in hashmap.keys():
+            if hashmap[key] > len(nums) // 2:
+                return key
