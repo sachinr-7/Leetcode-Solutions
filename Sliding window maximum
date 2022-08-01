@@ -1,0 +1,23 @@
+class Solution:
+    def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
+        ans = []
+        que = deque([])
+        B = k
+        A = nums
+        for i in range(B):
+            while que and que[-1] < A[i]:
+                que.pop()
+            que.append(A[i])
+        
+        l, h = 0, B
+        while h < len(A):
+            ans.append(que[0])
+            if A[l] == que[0]:
+                que.popleft()
+            l += 1
+            while que and que[-1] < A[h]:
+                que.pop()
+            que.append(A[h])
+            h += 1
+        ans.append(que[0])
+        return ans
