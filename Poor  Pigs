@@ -1,0 +1,9 @@
+import math
+class Solution:
+    def poorPigs(self, buckets: int, minutesToDie: int, minutesToTest: int) -> int:
+        num_pigs = log2(buckets)                                                      #number of pigs for one shot
+        tests = math.ceil(minutesToTest / minutesToDie)                               #number of tests we can have
+        
+        if tests == 1:
+            return math.ceil(num_pigs)                                                #one shot is the answer
+        return math.ceil(num_pigs / log2(tests + 1))
