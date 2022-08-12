@@ -1,0 +1,18 @@
+class Solution:
+    def interpret(self, command: str) -> str:
+        length = len(command)
+        ans = ""
+        
+        i = 0
+        while i < length:
+            if command[i] == "G":
+                ans = ans + 'G'
+                i += 1
+            elif command[i] == '(':
+                if command[i + 1] == ')':
+                    ans += 'o'
+                    i += 2
+                else:
+                    ans += 'al'
+                    i += 4
+        return ans
