@@ -1,0 +1,13 @@
+class Solution:
+    def largestSumAfterKNegations(self, nums: List[int], k: int) -> int:
+        from heapq import heappop, heappush
+        A = nums
+        min_heap = []
+        for ele in A:
+            heappush(min_heap, ele)
+        while k > 0:
+            temp = heappop(min_heap)
+            heappush(min_heap, -1 * temp)
+            k -= 1
+        
+        return sum(min_heap)
